@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class StateController extends Controller
 {
-    //
+    public function index() {
+        return view('commons.welcome');
+    }
 }
