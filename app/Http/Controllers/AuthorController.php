@@ -18,8 +18,31 @@ class AuthorController extends Controller
     public function show($authorId) {
         Log::info('Showing landing page for author: '.$authorId);
         $author = Author::findOrFail($authorId);
-        return view('authors/author', [
+        return view('authors.author', [
             'author' => $author
         ]);
+    }
+
+    public function edit($authorId) {
+        $author = Author::findOrFail($authorId);
+        return view('authors.edit', [
+            'author' => $author
+        ]);
+    }
+
+    public function update() {
+
+    }
+
+    public function create() {
+        return view('authors.create');
+    }
+
+    public function store() {
+
+    }
+
+    public function search() {
+        
     }
 }

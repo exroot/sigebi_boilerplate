@@ -9,7 +9,6 @@
 
     <title> @yield('title') </title>
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
@@ -26,6 +25,5 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

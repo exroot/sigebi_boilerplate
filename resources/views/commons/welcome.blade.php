@@ -5,8 +5,8 @@
 @section('content')
     <h2>welcome everybody</h2>
     <ul>
-        <li><a href="/book">Books</a></li>
-        <li><a href="/author">Authors</a></li>
+        <li><a href="/books">Books</a></li>
+        <li><a href="/authors">Authors</a></li>
         <li><a href="/">Inventary</a></li>
     </ul>
 @endsection

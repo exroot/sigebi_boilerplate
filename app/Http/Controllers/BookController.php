@@ -14,41 +14,9 @@ class BookController extends Controller
 {
     public function index() {
         $booksPaginated = Book::paginate(5);
-        $arrBooksCollections = $booksPaginated
-            ->getCollection()
-            ->map(function($book) {
-                /* 
-                Get pivot table information
-                    -For each book get states of each copy of that book
-                */
-                $bookItems = $book->states()->get();
-                $booksAvailable = collect($bookItems)->filter(function($bookCopy) {
-                    // Make a collection of those book items which are available
-                    return $bookCopy->state == "Ulises Dicki";
-                });
-                // Return an collection with book data, and status
-                return collect([
-                    'id' => $book->id,
-                    'title' => $book->title,
-                    'authorName' => $book->author->name,
-                    'authorId' => $book->author->id,
-                    'status' => count($booksAvailable) >= 1 ? 'Available' : 'Borrowed',
-                ]);
-        });
-
-        $booksTransformedAndPaginated = new LengthAwarePaginator(
-            $arrBooksCollections,
-            $booksPaginated->total(),
-            $booksPaginated->perPage(),
-            $booksPaginated->currentPage(), [
-                'path' => \Request::url(),
-                'query' => [
-                    'page' => $booksPaginated->currentPage()
-                ]
-            ]
-        );
+        $bookies = $this->transformAndRepaginate($booksPaginated);
         return view('books.index', [
-            'books' => $booksTransformedAndPaginated
+            'books' => $bookies
         ]);
     }
 
@@ -66,7 +34,94 @@ class BookController extends Controller
         ]);
     }
 
-    public function search() {
+    public function edit($bookId) {
+        $book = Book::findOrFail($bookId);
+        return view('books.edit')->with('book', $books);
+    }
 
+    public function update() {
+
+    }
+
+    public function create() {
+        return view('books.create');
+    }
+
+    public function store() {
+
+    }
+
+    public function search(Request $request) {
+        $request->validate([
+            'query' => 'required|min:3',
+        ]);
+        $query = $request->input('query');
+        $searchText = $query;
+        $booksFound = Book::with('Author')->with('Category')->where(function($query) use ($searchText)
+        {
+            $query->where('title', 'LIKE', '%'.$searchText.'%');
+            $columns = ['description'];
+
+            foreach ($columns as $column ) {
+                $query->orWhere($column, 'LIKE', '%'.$searchText.'%');
+            }
+
+            $query->orWhereHas('Author', function($q) use ($searchText) {
+                $q->where(function($q) use ($searchText) {
+                    $q->where('name', 'LIKE', '%'.$searchText.'%');
+                });
+            });
+
+            $query->orWhereHas('Category', function($q) use ($searchText) {
+                $q->where(function($q) use ($searchText) {
+                    $q->where('name', 'LIKE', '%'.$searchText.'%');
+                });
+            });
+            return $query;
+        });
+        $booksPaginated = $booksFound->paginate(10);
+        $numResults = count($booksFound->get());
+        $books = $this->transformAndRepaginate($booksPaginated);
+        return view('books.search', ['query' => $query, 'books' => $books, 'results' => $numResults]);
+    }
+
+    public function transformAndRepaginate($booksPaginated) {
+        $arrBooksCollections = $booksPaginated
+            ->getCollection()
+            ->map(function($book) {
+            /* 
+            Get pivot table information
+                -Find all copies of that book, and get their state
+            */
+            $bookItems = $book->states()->get();
+            $booksAvailable = collect($bookItems)->filter(function($bookCopy) {
+                /*
+                    Make a collection of those copies which are available
+
+                */
+                return $bookCopy->state == "Ulises Dicki";
+            });
+            // Return an collection with book data, and status
+            return collect([
+                'id' => $book->id,
+                'title' => $book->title,
+                'authorName' => $book->author->name,
+                'authorId' => $book->author->id,
+                'status' => count($booksAvailable) >= 1 ? 'Available' : 'Borrowed',
+            ]);
+        });
+
+        $booksTransformedAndPaginated = new LengthAwarePaginator(
+            $arrBooksCollections,
+            $booksPaginated->total(),
+            $booksPaginated->perPage(),
+            $booksPaginated->currentPage(), [
+                'path' => \Request::url(),
+                'query' => [
+                    'page' => $booksPaginated->currentPage()
+                ]
+            ]
+        );
+        return $booksTransformedAndPaginated;
     }
 }

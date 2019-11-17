@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'SIGEBI | Books | ' . $book->title)
 @section('content')
     <div class="container">
         <div class="head d-flex" style="padding-top: 15px;">
             <h2>{{ $book->title }}</h2>
-            <a href="/book" class="ml-auto">
+            <a href="/books" class=" ml-auto">
                 <button class="btn btn-primary">Go back</button>
             </a>
         </div>
@@ -16,7 +17,7 @@
             </div>
             <div class="col" style="border-left: 1px solid #f0f0f0; padding: 15px;">
                     <h4>Data:</h4>
-                    <p>Author: <a href={{ '/author/' . $book->author->id }}> {{ $book->author->name }} </a></p>
+                    <p>Author: <a href={{ '/authors/' . $book->author->id }}> {{ $book->author->name }} </a></p>
                     <p>Pages: {{ $book->pages }}</p>
                     <p>Category: {{ $book->category->name }}</p>
                     <p>Status: <span class={{ $availability == 'Available' ? 'status-icon-sucess' : 'status-icon-danger' }}> {{ $availability }}</span></p>
@@ -33,7 +34,7 @@
                         @if ($similarBook->id != $book->id)
                             {{-- filter the book itself --}}
                             <li>
-                                <a href={{ '/book/' . $similarBook->id }}>{{ $similarBook->title }}</a>
+                                <a href={{ '/books/' . $similarBook->id }}>{{ $similarBook->title }}</a>
                             </li>
                         @endif
                     @else

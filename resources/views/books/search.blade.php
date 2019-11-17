@@ -1,31 +1,25 @@
 @extends('layouts.app')
 
-@section('title', 'SIGEBI | Books')
+@section('title', 'Search results')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 mt-4">
             <div class="card shadow-sm">
-                <div class="card-header d-flex">
-                    <h5>Book's</h5>
-                    <button class="btn btn-sm btn-primary ml-auto">
-                        Add book</button>
+                <div class="card-header d-flex justify-content-between">
+                    <div>
+                        <p>Search results: {{ $results }}</p>
+                    </div>
+                    <div>
+                        <a href="/books" class="">
+                            <button class="btn btn-primary">
+                                Go back
+                            </button>
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <div class="col-md-12">
-                        <form class="form-inline md-form mr-auto mb-4" action="/books/search" method="GET">
-                            <input class="form-control mr-sm-2" type="text" name="query" id="query" placeholder="Search" aria-label="Search" style="width: 80%" value={{ request()->input('query') }}>
-                            @error('query')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            <button class="btn btn-outline-primary btn-rounded btn-sm my-0" style="margin-left: auto;
-                            width: 18%;
-                            height: 6.8vh;" type="submit">Search</button>
-                        </form>
-                    </div>
                     <div class="">
                         <table class="table table-hover">
                             <thead>
@@ -54,7 +48,11 @@
                         </table>
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center pt-4">
-                                {{ $books->links() }}
+                                    {{ $books->appends(request()->query())->links() }}
+                                {{-- {{ $books->appends(Request::except('page'))->links() }} --}}
+                                {{-- {{ $books->appends(['query' => $query])->links() }} --}}
+                                {{-- {{ $books->appends(Request::except('page'))->appends(['query' => $query])->links() }} --}}
+                                {{-- {!! $books->appends(Request::except('page'))->render() !!} --}}
                             </div>
                         </div>
                     </div>

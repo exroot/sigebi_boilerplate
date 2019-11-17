@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'SIGEBI | Authors')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header">Authors</div>
                 <div class="card-body">
                     <table class="table table-hover">
@@ -18,7 +19,7 @@
                             @forelse ($authors as $author)
                                 <tr>
                                 <th scope="row">{{ $author->id }}</th>
-                                <td><a href={{ "/author/" . $author->id }}>{{ $author->name }}</a></td>
+                                <td><a href={{ "/authors/" . $author->id }}>{{ $author->name }}</a></td>
                                 </tr>
                             @empty
                             <tr>

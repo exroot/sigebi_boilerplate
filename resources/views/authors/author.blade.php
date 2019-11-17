@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'SIGEBI | Authors | ' . $author->name)
 @section('content')
 <div class="container">
     <div class="header d-flex" style="padding-top: 15px;">
@@ -20,7 +21,7 @@
                 <ul>
                     @forelse ($author->books as $book)
                         <li>
-                            <a href={{ '/book/' . $book->id }}>{{ $book->title }}</a>
+                            <a href={{ '/books/' . $book->id }}>{{ $book->title }}</a>
                         </li>
                     @empty
                         <li>
