@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Book;
+use App\Author;
+use App\Category;
 use App\State;
 use App\BookItem;
 
@@ -44,11 +47,33 @@ class BookController extends Controller
     }
 
     public function create() {
-        return view('books.create');
+        $authors = Author::orderBy('name')->get();
+        $categories = Category::orderBy('name')->get();
+        return view('books.create', [
+            'authors' => $authors,
+            'categories' => $categories
+        ]);
     }
 
-    public function store() {
-
+    public function store(Request $request) {
+        $userId = Auth::user()->id;
+        $request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required',
+            'pages' => 'required|integer',
+            'author' => 'required|integer',
+            'category' => 'required|integer'
+        ]);
+        $newBook = new Book([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'pages' => (int) $request->input('pages'),
+            'category_id' => (int) $request->input('category'),
+            'author_id' => (int) $request->input('author'),
+            'user_id' => $userId
+        ]);
+        $newBook->save();
+        return redirect()->route('books');
     }
 
     public function search(Request $request) {
@@ -85,7 +110,7 @@ class BookController extends Controller
         return view('books.search', ['query' => $query, 'books' => $books, 'results' => $numResults]);
     }
 
-    public function transformAndRepaginate($booksPaginated) {
+    private function transformAndRepaginate($booksPaginated) {
         $arrBooksCollections = $booksPaginated
             ->getCollection()
             ->map(function($book) {
