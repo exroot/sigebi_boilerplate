@@ -11,9 +11,9 @@
 
                 <div class="card-body">
                 <form method="POST" action="{{ '/books' }}">
-                        {{-- @csrf
+                        @csrf
                         
-                        <input type="hidden" name="token" value="{{ $token }}"> --}}
+                        {{ csrf_field() }}
 
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
@@ -33,7 +33,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
                             <div class="col-md-6">
-                                <textarea id="password" type="text"  rows="8" class="form-control @error('description') is-invalid @enderror" required></textarea>
+                                <textarea id="password" type="text"  rows="8" name="description" class="form-control @error('description') is-invalid @enderror" required></textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -44,14 +44,39 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="author" class="col-md-4 col-form-label text-md-right">Author</label>
+                                <label for="pages" class="col-md-4 col-form-label text-md-right mr-3">Pages</label>
+    
+                                <input type="number" name="pages" class="form-control @error('pages') is-invalid @enderror col-md-5 text-md-center" required>
+                                @error('pages')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
 
-                            <div class="col-md-6">
-                                <input id="author" type="text" class="form-control"
-                                name="author"
-                                value=""
-                                >
                             </div>
+
+                        <div class="form-group row">
+                            <label for="author" class="col-md-4 col-form-label text-md-right mr-3">Author</label>
+
+                            <select name="author" class="form-control col-md-5 text-md-center">
+                                @forelse ($authors as $author)
+                                    <option value="{{ $author->id }}">{{ $author->name }}</option> 
+                                @empty
+                                    <option value="">No authors found.</option>
+                                @endforelse
+                            </select> 
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Category" class="col-md-4 col-form-label text-md-right mr-3">Category</label>
+
+                            <select name="category" class="form-control col-md-5 text-md-center">
+                                @forelse ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option> 
+                                @empty
+                                    <option value="">No categories found.</option>
+                                @endforelse
+                            </select> 
                         </div>
 
                         <div class="form-group row mb-0">
