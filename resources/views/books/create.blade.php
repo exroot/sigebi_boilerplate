@@ -46,7 +46,7 @@
                         <div class="form-group row">
                                 <label for="pages" class="col-md-4 col-form-label text-md-right mr-3">Pages</label>
     
-                                <input type="number" name="pages" class="form-control @error('pages') is-invalid @enderror col-md-5 text-md-center" required>
+                                <input type="number" name="pages" min="1" class="form-control @error('pages') is-invalid @enderror col-md-5 text-md-center" required>
                                 @error('pages')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

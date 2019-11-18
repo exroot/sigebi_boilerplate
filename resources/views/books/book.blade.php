@@ -5,9 +5,14 @@
     <div class="container">
         <div class="head d-flex" style="padding-top: 15px;">
             <h2>{{ $book->title }}</h2>
-            <a href="/books" class=" ml-auto">
-                <button class="btn btn-primary">Go back</button>
-            </a>
+            <div class="actions ml-auto">
+                <a href="{{ '/books/' . $book->id . '/edit' }}">
+                    <button class="btn btn-primary">Edit</button>
+                </a>
+                <a href="/books">
+                    <button class="btn btn-primary">Go back</button>
+                </a>
+            </div>
         </div>
         <hr>
         <div class="row">

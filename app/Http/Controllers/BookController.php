@@ -39,11 +39,35 @@ class BookController extends Controller
 
     public function edit($bookId) {
         $book = Book::findOrFail($bookId);
-        return view('books.edit')->with('book', $books);
+        $authors = Author::all()->sortBy('name');
+        $categories = Category::all()->sortBy('name');
+        return view('books.edit', [
+            'book' => $book,
+            'authors' => $authors,
+            'categories' => $categories
+        ]);
     }
 
-    public function update() {
-
+    public function update(Request $request, $id) {
+        $bookToUpdate = Book::findOrFail($id);
+        $userId = $bookToUpdate->user->id;
+        $request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required',
+            'pages' => 'required|integer',
+            'author' => 'required|integer',
+            'category' => 'required|integer'
+        ]);
+        $updatedInfo = array([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'pages' => (int) $request->input('pages'),
+            'category_id' => (int) $request->input('category'),
+            'author_id' => (int) $request->input('author'),
+            'user_id' => $userId
+        ]);
+        $bookToUpdate->update($updatedInfo[0]);
+        return redirect('/books');
     }
 
     public function create() {

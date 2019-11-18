@@ -11,7 +11,7 @@ Route::get('books/search', 'BookController@search');
 Route::post('books', 'BookController@store');               // Post request to create new book
 Route::get('books/{id}', 'BookController@show');            // Single book
 Route::get('books/{id}/edit', 'BookController@edit');       // Get edit book page/form
-Route::put('books/{id}', 'BookController@update');          // Put request to edit a book
+Route::post('books/{id}', 'BookController@update');          // Put request to edit a book
 
 Route::get('authors', 'AuthorController@index');            // Get all authors
 Route::get('authors/create', 'AuthorController@create');    // Get create author page/form
