@@ -66,6 +66,7 @@ class BookController extends Controller
             'author_id' => (int) $request->input('author'),
             'user_id' => $userId
         ]);
+        
         $bookToUpdate->update($updatedInfo[0]);
         return redirect('/books');
     }

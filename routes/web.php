@@ -18,7 +18,15 @@ Route::get('authors/create', 'AuthorController@create');    // Get create author
 Route::post('authors', 'AuthorController@store');           // Post request to create new author
 Route::get('authors/{id}', 'AuthorController@show');        // Get a single author
 Route::get('authors/{id}/edit', 'AuthorController@edit');   // Get edit author page/form
-Route::put('authors/{id}', 'AuthorController@update');      // Put request to edit a author
+Route::post('authors/{id}', 'AuthorController@update');      // Put request to edit a author
+
+Route::get('copies', 'BookItemController@index');            // Get all copies
+Route::get('copies/create', 'BookItemController@create');    // Get create author page/form
+Route::post('copies', 'BookItemController@store');           // Post request to create new author
+Route::get('copies/{id}', 'BookItemController@show');        // Get a single author
+Route::get('copies/{id}/edit', 'BookItemController@edit');   // Get edit author page/form
+Route::post('copies/{id}', 'BookItemController@update');      // Put request to edit a author
+
 
 
 
