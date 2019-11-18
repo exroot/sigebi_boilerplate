@@ -16,8 +16,8 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    {{-- <div class="col-md-12">
-                        <form class="form-inline md-form mr-auto mb-4" action="/books/search" method="GET">
+                    <div class="col-md-12">
+                        <form class="form-inline md-form mr-auto mb-4" action="/copies/search" method="GET">
                             <input class="form-control mr-sm-2" type="text" name="query" id="query" placeholder="Search by book title, author name..." aria-label="Search" style="width: 80%" value={{ request()->input('query') }}>
                             @error('query')
                                 <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                             width: 18%;
                             height: 6.8vh;" type="submit">Search</button>
                         </form>
-                    </div> --}}
+                    </div>
                     <div class="">
                         <table class="table table-hover">
                             <thead>

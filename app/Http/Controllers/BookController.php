@@ -48,8 +48,8 @@ class BookController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id) {
-        $bookToUpdate = Book::findOrFail($id);
+    public function update(Request $request, $bookId) {
+        $bookToUpdate = Book::findOrFail($bookId);
         $userId = $bookToUpdate->user->id;
         $request->validate([
             'title' => 'required|min:3',
@@ -68,7 +68,7 @@ class BookController extends Controller
         ]);
         
         $bookToUpdate->update($updatedInfo[0]);
-        return redirect('/books');
+        return redirect('/books/'. $bookId);
     }
 
     public function create() {

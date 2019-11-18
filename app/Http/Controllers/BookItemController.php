@@ -54,8 +54,8 @@ class BookItemController extends Controller
             'states' => $states
         ]);
     }
-    public function update(Request $request, $id) {
-        $copyToUpdate = BookItem::findOrFail($id);
+    public function update(Request $request, $copyId) {
+        $copyToUpdate = BookItem::findOrFail($copyId);
         $request->validate([
             'book' => 'required',
             'state' => 'required'
@@ -67,5 +67,30 @@ class BookItemController extends Controller
 
         $copyToUpdate->update($updatedCopyInfo[0]);
         return redirect('/copies');
+    }
+
+    public function search(Request $request) {
+        $request->validate([
+            'query' => 'required|min:3',
+        ]);
+        $query = $request->input('query');
+        $searchText = $query;
+        $copiesFound = BookItem::with('Book')->with('State')->where(function($query) use ($searchText)
+        {
+            $query->orWhereHas('Book', function($q) use ($searchText) {
+                $q->where(function($q) use ($searchText) {
+                    $q->where('title', 'LIKE', '%'.$searchText.'%');
+                });
+            });
+            $query->orWhereHas('State', function($q) use ($searchText) {
+                $q->where(function($q) use ($searchText) {
+                    $q->where('state', 'LIKE', '%'.$searchText.'%');
+                });
+            });
+            return $query;
+        });
+        $copies = $copiesFound->paginate(10);
+        $numResults = count($copiesFound->get());
+        return view('books.items.search-results', ['query' => $query, 'copies' => $copies, 'results' => $numResults]);
     }
 }
