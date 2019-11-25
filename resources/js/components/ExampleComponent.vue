@@ -1,23 +1,40 @@
-<template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+  import modal from './Modal.vue';
+
+  export default {
+    components: {
+      modal,
+    },
+    data () {
+      return {
+        isModalVisible: false,
+      };
+    },
+    methods: {
+      showModal: function() {
+        this.isModalVisible = true;
+      },
+      closeModal: function() {
+        this.isModalVisible = false;
+      },
+      message: function(event) {
+        console.log('button clcked');
+        this.$emit('click', this.page, event);
+      }
+    },
+  };
 </script>
+
+<template>
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      @click="showModal"
+    >
+      Open Modal!
+    </button>
+
+    <modal v-show="isModalVisible" @close="closeModal" />
+  </div>
+</template>

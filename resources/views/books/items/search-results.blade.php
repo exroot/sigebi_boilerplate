@@ -48,7 +48,7 @@
                         </table>
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center pt-4">
-                                    {{ $copies->links() }}
+                                    {{ $copies->appends(request()->query())->links() }}
                             </div>
                         </div>
                     </div>
