@@ -8,6 +8,11 @@ use App\Author;
 
 class AuthorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index() {
         $authors = Author::paginate(5);
         return view('authors/index', [

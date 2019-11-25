@@ -15,7 +15,14 @@ use App\BookItem;
 
 class BookController extends Controller
 {
-    public function index() {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index() 
+    {
         $booksPaginated = Book::paginate(5);
         $bookies = $this->transformAndRepaginate($booksPaginated);
         return view('books.index', [
@@ -23,7 +30,8 @@ class BookController extends Controller
         ]);
     }
 
-    public function show($bookId) {
+    public function show($bookId) 
+    {
         $book = Book::findOrFail($bookId);
         $bookCopies = $book->states()->get();
         $availables = collect($bookCopies)->filter(function($bookCopy) {
@@ -37,7 +45,8 @@ class BookController extends Controller
         ]);
     }
 
-    public function edit($bookId) {
+    public function edit($bookId) 
+    {
         $book = Book::findOrFail($bookId);
         $authors = Author::all()->sortBy('name');
         $categories = Category::all()->sortBy('name');
@@ -48,7 +57,8 @@ class BookController extends Controller
         ]);
     }
 
-    public function update(Request $request, $bookId) {
+    public function update(Request $request, $bookId) 
+    {
         $bookToUpdate = Book::findOrFail($bookId);
         $userId = $bookToUpdate->user->id;
         $request->validate([
@@ -72,15 +82,16 @@ class BookController extends Controller
     }
 
     public function create() {
-        $authors = Author::orderBy('name')->get();
-        $categories = Category::orderBy('name')->get();
+        $authors = Author::all()->sortBy('name');
+        $categories = Category::all()->sortBy('name');
         return view('books.create', [
             'authors' => $authors,
             'categories' => $categories
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request) 
+    {
         $userId = Auth::user()->id;
         $request->validate([
             'title' => 'required|min:3',
@@ -101,7 +112,8 @@ class BookController extends Controller
         return redirect()->route('books');
     }
 
-    public function search(Request $request) {
+    public function search(Request $request) 
+    {
         $request->validate([
             'query' => 'required|min:3',
         ]);
@@ -135,7 +147,8 @@ class BookController extends Controller
         return view('books.search', ['query' => $query, 'books' => $books, 'results' => $numResults]);
     }
 
-    private function transformAndRepaginate($booksPaginated) {
+    private function transformAndRepaginate($booksPaginated) 
+    {
         $arrBooksCollections = $booksPaginated
             ->getCollection()
             ->map(function($book) {

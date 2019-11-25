@@ -5,7 +5,7 @@
 <div class="container">
     <div class="header d-flex" style="padding-top: 15px;">
         <h2>{{ $author->name }}</h2>
-        <a href="/author" class="ml-auto">
+        <a href="/authors" class="ml-auto">
             <button class="btn btn-primary">Go back</button>
         </a>
     </div>
