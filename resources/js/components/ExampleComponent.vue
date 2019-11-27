@@ -1,5 +1,5 @@
 <script>
-  import modal from './Modal.vue';
+  import modal from './modals/CreateBookModal.vue';
 
   export default {
     components: {
@@ -16,12 +16,8 @@
       },
       closeModal: function() {
         this.isModalVisible = false;
-      },
-      message: function(event) {
-        console.log('button clcked');
-        this.$emit('click', this.page, event);
       }
-    },
+    }
   };
 </script>
 

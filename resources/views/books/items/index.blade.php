@@ -10,7 +10,7 @@
                 <div class="card-header d-flex">
                     <h5>Copies</h5>
                     <a href="/copies/create" class="ml-auto">
-                        <button class="btn btn-sm btn-primary">
+                        <button class="btn btn-primary">
                             Add Copy
                         </button>
                     </a>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm position-sticky">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -17,26 +17,26 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <li class="nav-item nav-item-ordinary">
+                        <a class="nav-link nav-link-ordinary" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <li class="nav-item nav-item-ordinary">
+                            <a class="nav-link nav-link-ordinary" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('copies') }}">{{ __('Copies') }}</a>
+                    <li class="nav-item nav-item-ordinary">
+                        <a class="nav-link nav-link-ordinary" href="{{ route('copies') }}">{{ __('Copies') }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('books') }}">{{ __('Books') }}</a>
+                    <li class="nav-item nav-item-ordinary">
+                        <a class="nav-link nav-link-ordinary" href="{{ route('books') }}">{{ __('Books') }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('authors') }}">{{ __('Authors') }}</a>
+                    <li class="nav-item nav-item-ordinary">
+                        <a class="nav-link nav-link-ordinary" href="{{ route('authors') }}">{{ __('Authors') }}</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <li class="nav-item nav-item-special dropdown">
+                        <a id="navbarDropdown" class="nav-link nav-link-special dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 

@@ -10,7 +10,7 @@
                 <div class="card-header d-flex">
                     <h5>Book's</h5>
                     <a href="/books/create" class="ml-auto">
-                        <button class="btn btn-sm btn-primary">
+                        <button class="btn btn-primary">
                             Add book
                         </button>
                     </a>
@@ -18,13 +18,13 @@
                 <div class="card-body">
                     <div class="col-md-12">
                         <form class="form-inline md-form mr-auto mb-4" action="/books/search" method="GET">
-                            <input class="form-control mr-sm-2" type="text" name="query" id="query" placeholder="Search by book title, author name..." aria-label="Search" style="width: 80%" value={{ request()->input('query') }}>
+                            <input class="form-control mr-sm-2"  type="text" name="query" id="query" placeholder="Search by book title, author name..." aria-label="Search" style="width: 80%" pattern=".{3,}"  required title="3 characters minimum"  value={{ request()->input('query') }}>
                             @error('query')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <button class="btn btn-outline-primary btn-rounded btn-sm my-0" style="margin-left: auto;
+                            <button class="btn btn-secondary my-0" style="margin-left: auto;
                             width: 18%;
                             height: 6.8vh;" type="submit">Search</button>
                         </form>

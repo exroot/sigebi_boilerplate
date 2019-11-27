@@ -6,7 +6,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow-sm">
-                <div class="card-header">Authors</div>
+                <div class="card-header d-flex">
+                    <h5>Authors</h5>
+                    <a href="/authors/create" class="ml-auto">
+                        <button class="btn btn-primary">
+                            Add author
+                        </button>
+                    </a>
+                </div>
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>

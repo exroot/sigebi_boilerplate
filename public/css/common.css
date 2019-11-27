@@ -83,10 +83,81 @@ html, body {
     text-transform: uppercase;
 }
 
-.nav-item:hover {
-    background-color: #f8fafc;
+.nav-item-ordinary {
+    border: 1px solid #2aa3b0;
+    margin: 3px 3px 3px 0px;
+    padding: 0px 3px 0px 3px;
+    border-radius: 3px;
 }
 
+.nav-link-ordinary {
+    color: #2aa3b0 !important;
+    font-weight: bold;
+}
+
+.nav-item-ordinary:hover {
+    background-color: #2aa3b0;
+    color: white !important;
+    transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -webkit-transition: .5s;
+}
+
+.nav-link-ordinary:hover {
+    color: white !important;
+}
+
+.navbar-brand {
+    font-family: 'Poppins';
+    font-size: 1.5em !important;
+    padding: 5px 15px 5px 15px;
+    border: 1px solid #2aa3b0;
+    background-color: white;
+    -webkit-border-radius: 20px;
+    -webkit-border-top-left-radius: 1px;
+    -webkit-border-bottom-right-radius: 1px;
+    -moz-border-radius: 20px;
+    -moz-border-radius-topleft: 1px;
+    -moz-border-radius-bottomright: 1px;
+    border-radius: 20px;
+    border-top-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    color: #2aa3b0 !important;
+}
+
+.navbar-brand:hover {
+    border: 1px solid #2aa3b0;
+    background-color: #2aa3b0;
+    color: white !important;
+    transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -webkit-transition: .5s;
+}
+
+.nav-item-special {
+    background-color: #2aa3b0;
+    margin: 3px 3px 3px 0px;
+    padding: 0px 3px 0px 3px;
+    border-radius: 3px;
+}
+
+.nav-link-special {
+    color: white !important;
+    font-weight: bold;
+}
+
+.dropdown-menu > a {
+    color: #73959e !important;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #2aa3b0 !important;
+}
+
+.btn-secondary {
+    background-color: #5f72bc !important;
+}
 .m-b-md {
     margin-bottom: 30px;
 }

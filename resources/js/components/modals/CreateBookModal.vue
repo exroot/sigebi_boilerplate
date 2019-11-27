@@ -5,9 +5,13 @@
       close: function() {
         this.$emit('close');
       },
+      postBook() {
+          console.log('Registering Book');
+      },
     },
   };
 </script>
+
 <template>
   <transition name="modal-fade">
     <div class="modal-backdrop" role="dialog">
@@ -15,7 +19,7 @@
         <header class="modal-header">
           <slot name="header">
             <h2>
-              This is the default tile!
+              Add new book!
             </h2>
             <button type="button" class="btn-close btn-right" @click="close" aria-label="Close modal">
               x
@@ -25,14 +29,50 @@
 
         <section class="modal-body">
           <slot name="body">
-            I'm the default body!
+            <div class="container">
+
+                <div class="input-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="description">Description</label>
+                    <textarea type="text" name="description" id="description" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="pages">Pages</label>
+                    <input type="number" name="pages" id="pages" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="author">Author</label>
+                    <select name="author">
+                        <option value="">Pepe</option> 
+                        <option value="">Juan2</option> 
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="category">Category</label>
+                    <select name="category">
+                        <option value="">Category 1</option> 
+                        <option value="">Category 2</option> 
+                    </select>
+                </div>
+
+            </div>
           </slot>
         </section>
 
         <footer class="modal-footer">
           <slot name="footer">
-            <button type="button" class="btn btn-green" @click="close" aria-label="Close modal">
-              Close me!
+            <button type="button" class="btn btn-danger" @click="close" aria-label="Close modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" @click="postBook" aria-label="Add new book">
+              Save
             </button>
           </slot>
         </footer>
@@ -40,6 +80,7 @@
     </div>
   </transition>
 </template>
+
 <style>
   .modal-backdrop {
     position: fixed;
@@ -64,7 +105,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 60vw;
-    max-height: 70vh;
+    max-height: 80vh;
   }
 
   .modal-header,
@@ -88,6 +129,32 @@
     position: relative;
     padding: 20px 10px;
   }
+
+  .container {
+      display: inline-block;
+      padding: 5px;
+  }
+  
+  .input-group {
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+    label {
+        padding-right: 5px;
+        display: inline-block;
+    }
+    input {
+        display: inline-block;
+    }
+    select {
+        display: inline-block;
+    }
+    textarea {
+        display: inline-block;
+    }
+
 
   .btn-close {
     border: none;

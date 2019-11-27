@@ -10,6 +10,7 @@
         <li><a href="/">Inventary</a></li>
     </ul>
     <!-- use the modal component, pass in the prop -->
+    <button class="btn btn-teal">testing</button>
     <example-component />
     <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->
     {{-- <script>
