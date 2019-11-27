@@ -18,9 +18,9 @@
       <div class="modal" ref="modal">
         <header class="modal-header">
           <slot name="header">
-            <h2>
+            <h3 class="modal-title">
               Add new book!
-            </h2>
+            </h3>
             <button type="button" class="btn-close btn-right" @click="close" aria-label="Close modal">
               x
             </button>
@@ -30,7 +30,7 @@
         <section class="modal-body">
           <slot name="body">
             <div class="container">
-
+            <form action="/books" method="POST">
                 <div class="input-group">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" required>
@@ -61,7 +61,7 @@
                         <option value="">Category 2</option> 
                     </select>
                 </div>
-
+              </form>
             </div>
           </slot>
         </section>
@@ -81,7 +81,10 @@
   </transition>
 </template>
 
-<style>
+<style scoped>
+  :root {
+    --primary: #2aa3b0;
+  }
   .modal-backdrop {
     position: fixed;
     top: 0;
@@ -104,20 +107,26 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 60vw;
-    max-height: 80vh;
+    width: 500px;
+    height: 500px;
+    max-width: 90%;
+    max-height: 90%;
   }
 
   .modal-header,
   .modal-footer {
-    padding: 15px;
+    padding: 10px;
     display: flex;
   }
 
   .modal-header {
     border-bottom: 1px solid #eeeeee;
-    color: #4AAE9B;
+    color: var(--teal);
     justify-content: space-between;
+  }
+
+   .modal-title {
+    padding: 10px 0px 0px 10px;
   }
 
   .modal-footer {
@@ -131,45 +140,67 @@
   }
 
   .container {
-      display: inline-block;
-      padding: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    max-height: 100%;
+    padding: 10px;
+    overflow: auto;
+    scrollbar-width: thin;
+    background-color: #97d4af;
+    border-bottom: 1px solid #dfe3e0;
   }
   
   .input-group {
-      width: 50%;
+      width: 85%;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 20px;
+      font-family: 'Montserrat';
+      font-size: 1.2em;
+      display: block;
   }
 
-    label {
-        padding-right: 5px;
-        display: inline-block;
-    }
-    input {
-        display: inline-block;
-    }
-    select {
-        display: inline-block;
-    }
-    textarea {
-        display: inline-block;
-    }
+  label {
+      padding-right: 5px;
+      font-weight: bold;
+      color: #545360;
+  }
 
+  input, textarea, select {
+    width: 100%;
+    color: #6f6f6f;
+  }
+
+  input, textarea {
+    padding: 5px;
+  }
+
+  select {
+    display: block;
+    margin-top: 5px;
+    padding: 8px;
+  }
+
+  .btn {
+    min-width: 20%;
+  }
 
   .btn-close {
-    border: none;
-    font-size: 20px;
-    padding: 20px;
+    font-size: 15px;
+    padding: 10px;
     cursor: pointer;
     font-weight: bold;
-    color: #4AAE9B;
+    color: var(--teal);
     background: transparent;
   }
 
   .btn-green {
     color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
+    background: var(--teal);
+    border: 1px solid var(--teal);
     border-radius: 2px;
   }
 

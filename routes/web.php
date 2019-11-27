@@ -28,9 +28,6 @@ Route::get('copies/{id}', 'BookItemController@show');        // Get a single aut
 Route::get('copies/{id}/edit', 'BookItemController@edit');   // Get edit author page/form
 Route::post('copies/{id}', 'BookItemController@update');      // Put request to edit a author
 
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -8,4 +8,5 @@
         <!-- Styles -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/common.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
     </head>
