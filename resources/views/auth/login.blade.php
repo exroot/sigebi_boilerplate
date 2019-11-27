@@ -3,7 +3,7 @@
 @section('title', 'SIGEBI | Log In')
 
 @section('content')
-<div class="container">
+<div class="container" id="auth">
     <h2 class="row justify-content-center mt-4" id="title">Log In</h2>
     <div class="row justify-content-center" id="auth">
         <div class="ml-auto mr-auto mt-5" id="card-container">

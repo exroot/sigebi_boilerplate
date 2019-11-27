@@ -28,7 +28,7 @@
       class="btn btn-primary"
       @click="showModal"
     >
-      Open Modal!
+      Add book
     </button>
 
     <modal v-show="isModalVisible" @close="closeModal" />

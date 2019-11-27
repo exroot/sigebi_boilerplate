@@ -3,9 +3,9 @@
 @section('title', 'SIGEBI | Create an account')
 
 @section('content')
-<div class="container">
+<div class="container" id="auth">
     <h2 class="row justify-content-center mt-4" id="title">Register</h2>
-    <div class="row justify-content-center" id="auth">
+    <div class="row justify-content-center">
         <div class="ml-auto mr-auto mt-5" id="card-container">
             <div class="card shadow">
                 <div class="card-body">

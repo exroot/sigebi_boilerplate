@@ -7,13 +7,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12 mt-4">
             <div class="card shadow-sm">
-                <div class="card-header d-flex">
+                <div class="card-header d-flex justify-content-between">
                     <h5>Book's</h5>
-                    <a href="/books/create" class="ml-auto">
+                    {{-- <a href="/books/create" class="ml-auto">
                         <button class="btn btn-primary">
                             Add book
                         </button>
-                    </a>
+                    </a> --}}
+                    <!-- use the modal component, pass in the prop -->
+                    <add-book/>
                 </div>
                 <div class="card-body">
                     <div class="col-md-12">

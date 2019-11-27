@@ -33,22 +33,22 @@
             <form action="/books" method="POST">
                 <div class="input-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="title" required>
+                    <input type="text" name="title" id="modal-title" required>
                 </div>
 
                 <div class="input-group">
                     <label for="description">Description</label>
-                    <textarea type="text" name="description" id="description" required></textarea>
+                    <textarea type="text" name="description" id="modal-description" required></textarea>
                 </div>
 
                 <div class="input-group">
                     <label for="pages">Pages</label>
-                    <input type="number" name="pages" id="pages" required>
+                    <input type="number" name="pages" id="modal-pages" required>
                 </div>
 
                 <div class="input-group">
                     <label for="author">Author</label>
-                    <select name="author">
+                    <select name="author" id="modal-author">
                         <option value="">Pepe</option> 
                         <option value="">Juan2</option> 
                     </select>
@@ -56,7 +56,7 @@
 
                 <div class="input-group">
                     <label for="category">Category</label>
-                    <select name="category">
+                    <select name="category" id="modal-category">
                         <option value="">Category 1</option> 
                         <option value="">Category 2</option> 
                     </select>
@@ -103,13 +103,12 @@
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
     height: 500px;
-    max-width: 90%;
+    max-width: 80%;
     max-height: 90%;
   }
 
@@ -146,7 +145,7 @@
     width: 100%;
     height: 90%;
     max-height: 100%;
-    padding: 10px;
+    padding: 30px 10px 10px 10px;
     overflow: auto;
     scrollbar-width: thin;
     background-color: #97d4af;
@@ -195,13 +194,12 @@
     font-weight: bold;
     color: var(--teal);
     background: transparent;
+	border: 0px;
   }
 
   .btn-green {
     color: white;
     background: var(--teal);
-    border: 1px solid var(--teal);
-    border-radius: 2px;
   }
 
   .modal-fade-enter,

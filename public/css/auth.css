@@ -13,14 +13,12 @@
     font-family: 'IBM';
     font-size: 30px;
 }
-#card-container {
-    max-width: 95%;
-    max-height: 95%;
-}
 
 #auth .card {
     width: 450px;
     padding: 10px 10px 0px 10px;
+    max-width: 95%;
+    max-height: 95%;
 }
 
 .card-login {
