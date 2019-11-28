@@ -22,7 +22,7 @@
               Add new book!
             </h3>
             <button type="button" class="btn-close btn-right" @click="close" aria-label="Close modal">
-              x
+              <i class="fa fa-times"></i>
             </button>
           </slot>
         </header>
@@ -114,7 +114,7 @@
 
   .modal-header,
   .modal-footer {
-    padding: 10px;
+    padding: 15px 10px 10px 10px;
     display: flex;
   }
 

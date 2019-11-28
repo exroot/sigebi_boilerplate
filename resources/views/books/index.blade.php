@@ -16,6 +16,7 @@
                     </a> --}}
                     <!-- use the modal component, pass in the prop -->
                     <add-book/>
+
                 </div>
                 <div class="card-body">
                     <div class="col-md-12">
@@ -28,7 +29,10 @@
                             @enderror
                             <button class="btn btn-secondary my-0" style="margin-left: auto;
                             width: 18%;
-                            height: 6.8vh;" type="submit">Search</button>
+                            height: 6.8vh;" type="submit">
+                                <i class="fa fa-search mr-1"></i>
+                                Search
+                            </button>
                         </form>
                     </div>
                     <div class="">

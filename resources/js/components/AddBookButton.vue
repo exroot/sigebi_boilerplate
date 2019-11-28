@@ -28,6 +28,7 @@
       class="btn btn-primary"
       @click="showModal"
     >
+      <i class="fa fa-plus mr-1"></i>
       Add book
     </button>
 

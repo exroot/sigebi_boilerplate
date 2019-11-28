@@ -42,6 +42,7 @@
                         <div class="form-group row mt-4 mb-4">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary col-md-12" >
+                                        <!-- Correct -->
                                     {{ __('Log In') }}
                                 </button>
                             </div>

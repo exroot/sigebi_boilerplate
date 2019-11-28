@@ -13,7 +13,8 @@
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fonts/font-awesome.min.css') }}" rel="stylesheet">
+    
     {{-- <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
 </head>
