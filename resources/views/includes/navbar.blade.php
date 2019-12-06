@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm position-sticky">
+<nav class="navbar navbar-expand-md shadow position-sticky">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -21,7 +21,7 @@
                         <a class="nav-link nav-link-ordinary" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
-                        <li class="nav-item nav-item-ordinary">
+                        <li class="nav-item nav-item-ordinary" id="signup">
                             <a class="nav-link nav-link-ordinary" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
@@ -44,7 +44,9 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                             
+                                             <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

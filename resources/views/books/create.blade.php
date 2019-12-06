@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-5">
+        <div class="col-md-10 mt-5">
             <div class="card shadow">
                 <div class="card-header">Add a new book</div>
 
@@ -19,7 +19,7 @@
                             <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="" required autofocus>
+                                <input id="input-title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="" required autofocus>
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -84,15 +84,13 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-4 offset-md-4 d-flex">
-                                <button type="submit" class="btn btn-danger col-md-6">
-                                    Cancel
-                                </button>
-                                <button type="submit" class="btn btn-primary col-md-5 ml-auto">
-                                    Add
-                                </button>
-                            </div>
+                        <div class="form-group row mb-0 col-md-12 d-flex justify-content-center">
+                            <button class="btn btn-outline-secondary col-md-2 mr-1" style="max-width: 35%">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary col-md-2 ml-1" style="max-width: 35%">
+                                Add
+                            </button>
                         </div>
                     </form>
                 </div>

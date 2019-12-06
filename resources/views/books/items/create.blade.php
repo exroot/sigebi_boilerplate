@@ -44,15 +44,13 @@
                         </div>
                         <hr>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-4 offset-md-4 d-flex">
-                                <button type="submit" class="btn btn-danger col-md-6">
-                                    Cancel
-                                </button>                          
-                                <button type="submit" class="btn btn-primary col-md-5 ml-auto">
-                                    Add
-                                </button>
-                            </div>
+                        <div class="form-group row mb-0 d-flex justify-content-center">
+                            <button class="btn btn-outline-secondary col-md-2 mr-1" style="max-width: 35%">
+                                Cancel
+                            </button>                          
+                            <button type="submit" class="btn btn-primary col-md-2 ml-1" style="max-width: 35%">
+                                Add
+                            </button>
                         </div>
                     </form>
                 </div>

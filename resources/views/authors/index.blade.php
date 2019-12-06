@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-header d-flex">
                     <h5>Authors</h5>
                     <a href="/authors/create" class="ml-auto">

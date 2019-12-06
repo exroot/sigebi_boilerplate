@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 mt-4">
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-header d-flex">
                     <h5>Copies</h5>
                     <a href="/copies/create" class="ml-auto">

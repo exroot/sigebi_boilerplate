@@ -6,7 +6,29 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 mt-4">
-            <div class="card shadow-sm">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h5>Search book</h5>
+                </div>
+                    <div class="card-body">
+                        <div class="">
+                            <form class="form-inline md-form" action="/books/search" method="GET">
+                                <input class="form-control col-md-10"  type="text" name="query" id="query" placeholder="Search by book title, author name..." aria-label="Search" pattern=".{3,}"  required title="3 characters minimum" style="width: 100%;" value={{ request()->input('query') }}>
+                                @error('query')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <button class="btn btn-primary col-md-2" type="submit">
+                                    <i class="fa fa-search mr-1"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-12 mt-4">
+            <div class="card shadow">
                 <div class="card-header d-flex justify-content-between">
                     <h5>Book's</h5>
                     {{-- <a href="/books/create" class="ml-auto">
@@ -16,10 +38,9 @@
                     </a> --}}
                     <!-- use the modal component, pass in the prop -->
                     <add-book/>
-
                 </div>
                 <div class="card-body">
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <form class="form-inline md-form mr-auto mb-4" action="/books/search" method="GET">
                             <input class="form-control mr-sm-2"  type="text" name="query" id="query" placeholder="Search by book title, author name..." aria-label="Search" style="width: 80%" pattern=".{3,}"  required title="3 characters minimum"  value={{ request()->input('query') }}>
                             @error('query')
@@ -34,7 +55,7 @@
                                 Search
                             </button>
                         </form>
-                    </div>
+                    </div> --}}
                     <div class="">
                         <table class="table table-hover">
                             <thead>
